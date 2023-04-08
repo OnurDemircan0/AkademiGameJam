@@ -9,12 +9,17 @@ public class RivalCharacter : MonoBehaviour
     public KeyCode startkey = KeyCode.KeypadEnter;
     public KeyCode resetkey = KeyCode.R;
 
-    public string[] options = { "A", "B", "C", "D" };
+    public string[] optFalse = { "False1", "False2", "False3"};
+    public string optTrue = "True";
     public int optionsIndex = -1;
 
     public Animator animator;
     private bool CountingDown = false;
     private float Timer = 0f;
+
+    public string answer;
+
+    public int diff = 0;
 
     
 
@@ -62,7 +67,158 @@ public class RivalCharacter : MonoBehaviour
         Timer = countdownLength;
 
 
-        optionsIndex = Random.Range(0, options.Length);
+        switch(LevelController.level)
+        {
+            case 1:
+                //level 1
+
+                optionsIndex = Random.Range(0, optFalse.Length);
+                answer = optFalse[optionsIndex];
+                diff += 5;
+                break;
+
+            case 2:
+                if (Probability(diff))
+                {
+                    answer = optTrue;
+                    diff += 5;
+                }
+                    
+                else
+                {
+                    optionsIndex = Random.Range(0, optFalse.Length);
+                    answer = optFalse[optionsIndex];
+                    diff += 5;
+                }
+                
+                break;
+            case 3:
+                if (Probability(diff))
+                {
+                    answer = optTrue;
+                    diff += 5;
+                }
+
+                else
+                {
+                    optionsIndex = Random.Range(0, optFalse.Length);
+                    answer = optFalse[optionsIndex];
+                    diff += 5;
+                }
+
+                break;
+
+            case 4:
+                if (Probability(diff))
+                {
+                    answer = optTrue;
+                    diff += 5;
+                }
+
+                else
+                {
+                    optionsIndex = Random.Range(0, optFalse.Length);
+                    answer = optFalse[optionsIndex];
+                    diff += 5;
+                }
+
+                break;
+            case 5:
+                if (Probability(diff))
+                {
+                    answer = optTrue;
+                    diff += 5;
+                }
+
+                else
+                {
+                    optionsIndex = Random.Range(0, optFalse.Length);
+                    answer = optFalse[optionsIndex];
+                    diff += 5;
+                }
+
+                break;
+
+            case 6:
+                if (Probability(diff))
+                {
+                    answer = optTrue;
+                    diff += 5;
+                }
+
+                else
+                {
+                    optionsIndex = Random.Range(0, optFalse.Length);
+                    answer = optFalse[optionsIndex];
+                    diff += 5;
+                }
+
+                break;
+
+            case 7:
+                if (Probability(diff))
+                {
+                    answer = optTrue;
+                    diff += 5;
+                }
+
+                else
+                {
+                    optionsIndex = Random.Range(0, optFalse.Length);
+                    answer = optFalse[optionsIndex];
+                    diff += 5;
+                }
+
+                break;
+
+            case 8:
+                if (Probability(diff))
+                {
+                    answer = optTrue;
+                    diff += 5;
+                }
+
+                else
+                {
+                    optionsIndex = Random.Range(0, optFalse.Length);
+                    answer = optFalse[optionsIndex];
+                    diff += 5;
+                }
+
+                break;
+
+            case 9:
+                if (Probability(diff))
+                {
+                    answer = optTrue;
+                    diff += 5;
+                }
+
+                else
+                {
+                    optionsIndex = Random.Range(0, optFalse.Length);
+                    answer = optFalse[optionsIndex];
+                    diff += 5;
+                }
+                break;
+
+            case 10:
+                if (Probability(diff))
+                {
+                    answer = optTrue;
+                    diff += 5;
+                }
+
+                else
+                {
+                    optionsIndex = Random.Range(0, optFalse.Length);
+                    answer = optFalse[optionsIndex];
+                    diff += 5;
+                }
+
+                break;
+
+        }
 
 
         animator.SetBool("Writing", true);
@@ -70,10 +226,25 @@ public class RivalCharacter : MonoBehaviour
         animator.SetBool("ShowingAnswer", false);
     }
 
-
-    void EndCountdown()
+    static bool Probability(int probabilityValue)
     {
-        CountingDown = false;
+        int randomNumber = Random.Range(0, 100);
+        
+
+        if (randomNumber <= probabilityValue)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+void EndCountdown()
+    {
+    CountingDown = false;
 
 
         animator.SetBool("Writing", false);
@@ -95,6 +266,6 @@ public class RivalCharacter : MonoBehaviour
 
     public string GetCurrentOption()
     {
-        return options[optionsIndex];
+        return answer;
     }
 }
