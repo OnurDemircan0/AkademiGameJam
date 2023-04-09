@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     [Header("References")]
-    public Rigidbody rb;
     public Transform head;
     public Camera camera;
 
@@ -33,10 +32,10 @@ public class PlayerController : MonoBehaviour {
         // Horizontal rotation
 
         float yRotation = transform.eulerAngles.y;
-        // Debug.Log("Current y rotation: " + yRotation);
+        Debug.Log("Current y rotation: " + yRotation);
         yRotation += Input.GetAxis("Mouse X") * 2f;
-        // Debug.Log("Current y rotation: " + Vector3.up * Input.GetAxis("Mouse X") * 2f);
-        if ((yRotation >= 275) || (yRotation <= 90))
+        Debug.Log("Current y rotation: " + Vector3.up * Input.GetAxis("Mouse X") * 2f);
+        if ((yRotation >= 180) || (yRotation <= 0))
         {
         transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * 2f);   // Adjust the multiplier for different rotation speed
         }
