@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Answers : MonoBehaviour
+public class Riddles : MonoBehaviour
 {
     public TextMeshPro question;
     public string[] childNames = { "A", "B", "C", "D" };
