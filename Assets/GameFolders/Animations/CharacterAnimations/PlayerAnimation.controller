@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -4225111753488255649, guid: 7fb0c038ac6cbbe4cb7df2595df13445, type: 3}
+  m_Motion: {fileID: -4237494830541424429, guid: e34b876dabb3c444985f2dfd81e2b1b2, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -182,7 +182,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -1186537750117723413, guid: 7fb0c038ac6cbbe4cb7df2595df13445, type: 3}
+  m_Motion: {fileID: -4220007710900823861, guid: e34b876dabb3c444985f2dfd81e2b1b2, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -196,7 +196,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Armature|ShowThePaper 0
-  m_Speed: 1
+  m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3786075658746070348}
@@ -209,7 +209,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -1186537750117723413, guid: 7fb0c038ac6cbbe4cb7df2595df13445, type: 3}
+  m_Motion: {fileID: -4220007710900823861, guid: e34b876dabb3c444985f2dfd81e2b1b2, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
