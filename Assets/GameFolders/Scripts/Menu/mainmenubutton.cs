@@ -7,8 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class mainmenubutton : MonoBehaviour
 {
-    public void LoadGame()
+    public void MainMenu()
     {
         SceneManager.LoadScene("mainmenu");
     }
-}
+
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+}    
+
