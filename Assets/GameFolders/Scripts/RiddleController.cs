@@ -18,12 +18,16 @@ public class RiddleController : MonoBehaviour
     [SerializeField] GameObject playerChoiceA, playerChoiceB, playerChoiceC;
     [SerializeField] GameObject rivalChoiceA, rivalChoiceB, rivalChoiceC;
 
+    [SerializeField] GameObject[] happyEmojis;
+    [SerializeField] GameObject[] sadEmojis;
+
     GameObject currentPlayerChoice;
     GameObject rightRivalChoice;
     GameObject wrongRivalChoice;
     
 
     bool playerAnswered;
+    bool answerIsCorrect;
 
     int correctAnswers;
     int rivalCorrectAnswers;
@@ -48,6 +52,7 @@ public class RiddleController : MonoBehaviour
         rivalWinPossibility = Mathf.Clamp(rivalWinPossibility, 0, 100);
 
         playerAnswered = false;
+        answerIsCorrect = false;
 
         showQuestion = false;
         questionActive = false;
@@ -130,6 +135,21 @@ public class RiddleController : MonoBehaviour
 
             questionNumber++;
 
+            if (answerIsCorrect)
+            {
+                for (int i = 0; i < happyEmojis.Length; i++)
+                {
+                    StartCoroutine(EmojiDelay(happyEmojis[i]));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < sadEmojis.Length; i++)
+                {
+                    StartCoroutine(EmojiDelay(sadEmojis[i]));
+                }
+            }
+
             Invoke(nameof(ReplaceQuestion), 2f);
         }
 
@@ -150,6 +170,12 @@ public class RiddleController : MonoBehaviour
         showQuestion = true;
     }
 
+    IEnumerator EmojiDelay(GameObject emoji)
+    {
+        emoji.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        emoji.SetActive(false);
+    }
 
     void ReplaceQuestion()
     {
@@ -285,6 +311,7 @@ public class RiddleController : MonoBehaviour
     {
         playerAnswered = true;
         showQuestion = false;
+        answerIsCorrect = true;
         TimeController.currentTime = 0;
         correctAnswers++;
     }
@@ -293,6 +320,7 @@ public class RiddleController : MonoBehaviour
     {
         playerAnswered = true;
         showQuestion = false;
+        answerIsCorrect = false;
         TimeController.currentTime = 0;
         maxRivalCorrectAnswers = 3;
     }
