@@ -216,7 +216,10 @@ public class RiddleController : MonoBehaviour
                 //Invoke(nameof(SpitOutPaperDelay), 0.3f);
                 Invoke(nameof(LoadGameOverMenu), 4.0f);
             }
-            
+
+            PlayerPrefs.SetInt("playerCorrectAnswers", correctAnswers);
+            PlayerPrefs.SetInt("rivalCorrectAnswers", rivalCorrectAnswers);
+            PlayerPrefs.Save();
         }
         else
         {
