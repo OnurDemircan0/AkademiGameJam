@@ -21,6 +21,9 @@ public class RiddleController : MonoBehaviour
     [SerializeField] GameObject[] happyEmojis;
     [SerializeField] GameObject[] sadEmojis;
 
+    [SerializeField] GameObject spitOutPaper;
+    [SerializeField] GameObject splash;
+
     GameObject currentPlayerChoice;
     GameObject rightRivalChoice;
     GameObject wrongRivalChoice;
@@ -204,7 +207,10 @@ public class RiddleController : MonoBehaviour
             }
             else
             {
-                Invoke(nameof(LoadGameOverMenu), 2.0f);
+                SpitOutController.spitOut = true;
+                StartCoroutine(SpitOutDelay());
+                //Invoke(nameof(SpitOutPaperDelay), 0.3f);
+                Invoke(nameof(LoadGameOverMenu), 4.0f);
             }
             
         }
@@ -214,6 +220,19 @@ public class RiddleController : MonoBehaviour
         }
     }
 
+    IEnumerator SpitOutDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        spitOutPaper.SetActive(true);
+        yield return new WaitForSeconds(0.23f);
+        splash.SetActive(true);
+    }
+    /*
+    void SpitOutPaperDelay()
+    {
+        spitOutPaper.SetActive(true);
+    }
+    */
     void SelectRightAnswer(int rightAnswer)
     {
         if (Input.GetKeyDown(KeyCode.A))
