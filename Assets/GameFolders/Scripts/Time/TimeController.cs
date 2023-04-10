@@ -7,6 +7,8 @@ public class TimeController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI time_Text;
     [SerializeField] float questionTime;
+    [SerializeField] Color32 timeFont;
+    [SerializeField] Color32 timeFont2;
 
     public static float currentTime;
 
@@ -30,6 +32,15 @@ public class TimeController : MonoBehaviour
         else
         {
             currentTime = questionTime;
+        }
+
+        if(currentTime < 4)
+        {
+            time_Text.color = timeFont2;
+        }
+        else
+        {
+            time_Text.color = timeFont;
         }
 
         time_Text.text = ((int)currentTime).ToString();
