@@ -14,7 +14,6 @@ public class PlayCharacterSound : MonoBehaviour
         happy = false;
 
         _characterAudio = GetComponent<AudioSource>();
-        _characterAudio.volume = PlayerPrefs.GetFloat("audioVolume");
     }
 
     // Update is called once per frame
@@ -25,11 +24,12 @@ public class PlayCharacterSound : MonoBehaviour
             _characterAudio.enabled = true;
             StartCoroutine(Delay());
         }
+        Debug.Log(happy);
     }
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         happy = false;
         _characterAudio.enabled = false;
     }

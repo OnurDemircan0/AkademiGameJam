@@ -12,7 +12,6 @@ public class PlayCharacterSoundSad : MonoBehaviour
     void Start()
     {
         _characterAudio = GetComponent<AudioSource>();
-        _characterAudio.volume = PlayerPrefs.GetFloat("audioVolume");
     }
 
     // Update is called once per frame
@@ -27,7 +26,7 @@ public class PlayCharacterSoundSad : MonoBehaviour
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         sad = false;
         _characterAudio.enabled = false;
     }

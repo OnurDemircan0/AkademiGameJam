@@ -13,6 +13,8 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] bool gameLevel;
 
+    public static float volume;
+
     private void Awake()
     {
         Current = this;
@@ -44,8 +46,7 @@ public class LevelController : MonoBehaviour
 
     public void SaveAudioVolume()
     {
-        PlayerPrefs.SetFloat("audioVolume", MainMenuSound.audioVolume);
-        PlayerPrefs.Save();
+        volume = MainMenuSound.audioVolume;
     }
 
 }
