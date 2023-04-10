@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelController : MonoBehaviour
 {
     public static LevelController Current;
     public static int level = 1;
+
+    [SerializeField] TextMeshProUGUI levelText;
 
     private void Awake()
     {
@@ -15,7 +18,7 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        
+        levelText.text = "Level " + level;
     }
 
     public void LoadScene()
