@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You completed a level.
+  m_text: You completed the level.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4d74d549a97235499f4e142d909d535, type: 2}
   m_sharedMaterial: {fileID: -2325906911601109346, guid: b4d74d549a97235499f4e142d909d535, type: 2}
