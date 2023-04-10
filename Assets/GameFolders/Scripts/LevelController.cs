@@ -42,4 +42,10 @@ public class LevelController : MonoBehaviour
         SceneManager.LoadScene("gameover");
     }
 
+    public void SaveAudioVolume()
+    {
+        PlayerPrefs.SetFloat("audioVolume", MainMenuSound.audioVolume);
+        PlayerPrefs.Save();
+    }
+
 }
