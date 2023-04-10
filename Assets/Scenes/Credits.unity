@@ -399,10 +399,16 @@ MonoBehaviour:
   m_text: 'Game Developers
 
 
+
+
+
     Level Designers
 
 
+
     UI Developers
+
+
 
 
     Project
@@ -412,7 +418,21 @@ MonoBehaviour:
     Voice Actors
 
 
-    Sound Effects'
+
+    Sound Effects
+
+
+    Animators
+
+
+    UI Animator
+
+
+    3D
+    Artist
+
+
+    Research Team'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4d74d549a97235499f4e142d909d535, type: 2}
   m_sharedMaterial: {fileID: -2325906911601109346, guid: b4d74d549a97235499f4e142d909d535, type: 2}
@@ -615,23 +635,54 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game Developers
+  m_text: 'Ata GUNES
+
+    Onur DEMIRCAN
+
+    Ceyda DEPEHARMAN
+
+    Ozgur Kaan KURU
 
 
-    Level Designers
+    Ceyda
+    DEPEHARMAN
+
+    Onur DEMIRCAN
 
 
-    UI Developers
+    Ozgur Kaan KURU
+
+    Onur DEMIRCAN
+
+    Ceyda
+    DEPEHARMAN
 
 
-    Project
-    Manager
+    Onur DEMIRCAN
 
 
-    Voice Actors
+    Ata GUNES
+
+    Onur DEMIRCAN
 
 
-    Sound Effects'
+    Ozgur
+    Kaan KURU
+
+
+    Onur DEMIRCAN
+
+
+    Ozgur Kaan KURU
+
+
+    Onur DEMIRCAN
+
+
+    Ozgur
+    Kaan KURU
+
+    Ceyda DEPEHARMAN'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4d74d549a97235499f4e142d909d535, type: 2}
   m_sharedMaterial: {fileID: -2325906911601109346, guid: b4d74d549a97235499f4e142d909d535, type: 2}
