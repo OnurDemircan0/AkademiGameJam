@@ -7,19 +7,30 @@ public class RiddleController : MonoBehaviour
 {
     [SerializeField] int rightAnswerQuestion1, rightAnswerQuestion2, rightAnswerQuestion3;
 
-    [SerializeField] TextMeshProUGUI correctAnswers_Text;
+    [SerializeField] TextMeshProUGUI correctAnswers_Text, rivalCorrectAnswers_Text;
     [SerializeField] GameObject question1, question2, question3;
 
     private GameObject currentQuestion;
 
     [SerializeField] GameObject aIsTrue, bIsTrue, cIsTrue;
     private GameObject currentOptions;
+
+    [SerializeField] GameObject playerChoiceA, playerChoiceB, playerChoiceC;
+    [SerializeField] GameObject rivalChoiceA, rivalChoiceB, rivalChoiceC;
+
+    GameObject currentPlayerChoice;
+    GameObject rightRivalChoice;
+    GameObject wrongRivalChoice;
     
 
     bool playerAnswered;
 
     int correctAnswers;
+    int rivalCorrectAnswers;
+    int maxRivalCorrectAnswers;
     int questionNumber;
+
+    int rivalWinPossibility;
 
     bool showQuestion;
     public static bool questionActive;
@@ -29,7 +40,12 @@ public class RiddleController : MonoBehaviour
     private void Start()
     {
         correctAnswers = 0;
+        rivalCorrectAnswers = 0;
+        maxRivalCorrectAnswers = 2;
         questionNumber = 1;
+
+        rivalWinPossibility = (LevelController.level - 1) * 8;
+        rivalWinPossibility = Mathf.Clamp(rivalWinPossibility, 0, 100);
 
         playerAnswered = false;
 
@@ -42,7 +58,6 @@ public class RiddleController : MonoBehaviour
     }
 
     //seri bir þekilde doðru cevaba týklayýnca correctAnswers sürekli olarak artabilir onu kontrol et.
-
 
     private void Update()
     {
@@ -78,26 +93,57 @@ public class RiddleController : MonoBehaviour
         {
             timePassed = true;
 
-            ClockVibrate.canVibrate = true;
-
             if (!playerAnswered)
             {
                 WrongAnswer();
+                playerAnswered = false;
             }
+
+            ClockVibrate.canVibrate = true;
+
             PlayerAnimation.replacePaper = false;
             PlayerAnimation.showPaper = true;
 
+            int randomNumber = Random.Range(0, 100);
+
+            //rivalCorrectAnswers eðer oyuncu yanlýþ cevap vermediyse en fazla 2 olabilir ki 3-3 lük bir durum saðlanamasýn. Oyuncu yanlýþ cevap verdiyse en fazla 3 olabiliyor.
+            if(randomNumber <= rivalWinPossibility && rivalCorrectAnswers < maxRivalCorrectAnswers)
+            {
+                rivalCorrectAnswers++;
+                rightRivalChoice.SetActive(true);
+            }
+            else
+            {
+                wrongRivalChoice.SetActive(true);
+            }
+
             correctAnswers_Text.text = correctAnswers.ToString();
+            rivalCorrectAnswers_Text.text = rivalCorrectAnswers.ToString();
 
             //Shows what the right answer.
             currentOptions.SetActive(true);
+
+            if(currentPlayerChoice != null)
+            {
+                currentPlayerChoice.SetActive(true);
+            }
+
+            questionNumber++;
 
             Invoke(nameof(ReplaceQuestion), 2f);
         }
 
     }
 
+    void LoadCongratsMenu()
+    {
+        LevelController.Current.CongratsMenu();
+    }
 
+    void LoadGameOverMenu()
+    {
+        LevelController.Current.GameOverMenu();
+    }
 
     void ShowQuestionTrue()
     {
@@ -112,9 +158,34 @@ public class RiddleController : MonoBehaviour
         currentQuestion.SetActive(false);
         currentOptions.SetActive(false);
 
+        rightRivalChoice.SetActive(false);
+        wrongRivalChoice.SetActive(false);
+
+        if(currentPlayerChoice != null)
+        {
+            currentPlayerChoice.SetActive(false);
+        }
+        currentPlayerChoice = null;
+
         PlayerAnimation.showPaper = false;
         PlayerAnimation.replacePaper = true;
-        Invoke(nameof(ShowQuestionTrue), 2.0f);
+        
+        if(questionNumber > 3)
+        {
+            if(correctAnswers > rivalCorrectAnswers)
+            {
+                Invoke(nameof(LoadCongratsMenu), 2.0f);
+            }
+            else
+            {
+                Invoke(nameof(LoadGameOverMenu), 2.0f);
+            }
+            
+        }
+        else
+        {
+            Invoke(nameof(ShowQuestionTrue), 2.0f);
+        }
     }
 
     void SelectRightAnswer(int rightAnswer)
@@ -130,6 +201,8 @@ public class RiddleController : MonoBehaviour
             {
                 WrongAnswer();
             }
+
+            currentPlayerChoice = playerChoiceA;
         }
         else if (Input.GetKeyDown(KeyCode.B))
         {
@@ -141,6 +214,8 @@ public class RiddleController : MonoBehaviour
             {
                 WrongAnswer();
             }
+
+            currentPlayerChoice = playerChoiceB;
         }
         else if (Input.GetKeyDown(KeyCode.C))
         {
@@ -152,40 +227,75 @@ public class RiddleController : MonoBehaviour
             {
                 WrongAnswer();
             }
+
+            currentPlayerChoice = playerChoiceC;
         }
 
         if(rightAnswer == 0)
         {
             currentOptions = aIsTrue;
+            rightRivalChoice = rivalChoiceA;
+
+            int randomWrongChoice = Random.Range(0, 2);
+
+            if (randomWrongChoice == 0)
+            {
+                wrongRivalChoice = rivalChoiceB;
+            }
+            else
+            {
+                wrongRivalChoice = rivalChoiceC;
+            }
         }
         else if(rightAnswer == 1)
         {
             currentOptions = bIsTrue;
+            rightRivalChoice = rivalChoiceB;
+
+            int randomWrongChoice = Random.Range(0, 2);
+
+            if (randomWrongChoice == 0)
+            {
+                wrongRivalChoice = rivalChoiceA;
+            }
+            else
+            {
+                wrongRivalChoice = rivalChoiceC;
+            }
         }
         else if(rightAnswer == 2)
         {
             currentOptions = cIsTrue;
+            rightRivalChoice = rivalChoiceC;
+
+            int randomWrongChoice = Random.Range(0, 2);
+
+            if (randomWrongChoice == 0)
+            {
+                wrongRivalChoice = rivalChoiceA;
+            }
+            else
+            {
+                wrongRivalChoice = rivalChoiceB;
+            }
         }
     }
     
     void RightAnswer()
     {
-        Debug.Log("1");
         playerAnswered = true;
         showQuestion = false;
         TimeController.currentTime = 0;
-        questionNumber++;
         correctAnswers++;
-        
     }
 
     void WrongAnswer()
     {
-        Debug.Log("2");
         playerAnswered = true;
         showQuestion = false;
         TimeController.currentTime = 0;
-        questionNumber++;
+        maxRivalCorrectAnswers = 3;
     }
+
 
 }

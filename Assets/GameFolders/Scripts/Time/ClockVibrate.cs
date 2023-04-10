@@ -22,7 +22,6 @@ public class ClockVibrate : MonoBehaviour
         if (canVibrate)
         {
             canVibrate = false;
-            Debug.Log("aþfþlakdgiladg");
             _animator.SetTrigger("Vibration");
         }
     }
