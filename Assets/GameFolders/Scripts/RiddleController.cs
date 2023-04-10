@@ -24,6 +24,8 @@ public class RiddleController : MonoBehaviour
     [SerializeField] GameObject spitOutPaper;
     [SerializeField] GameObject splash;
 
+    [SerializeField] AudioSource clockVibration;
+
     GameObject currentPlayerChoice;
     GameObject rightRivalChoice;
     GameObject wrongRivalChoice;
@@ -72,6 +74,8 @@ public class RiddleController : MonoBehaviour
         if (showQuestion)
         {
             questionActive = true;
+
+            clockVibration.enabled = false;
             if (questionNumber == 1)
             {
                 question1.SetActive(true);
@@ -108,6 +112,7 @@ public class RiddleController : MonoBehaviour
             }
 
             ClockVibrate.canVibrate = true;
+            clockVibration.enabled = true;
 
             PlayerAnimation.replacePaper = false;
             PlayerAnimation.showPaper = true;
@@ -140,6 +145,7 @@ public class RiddleController : MonoBehaviour
 
             if (answerIsCorrect)
             {
+                PlayCharacterSound.happy = true;
                 for (int i = 0; i < happyEmojis.Length; i++)
                 {
                     StartCoroutine(EmojiDelay(happyEmojis[i]));
@@ -147,6 +153,7 @@ public class RiddleController : MonoBehaviour
             }
             else
             {
+                PlayCharacterSound.happy = false;
                 for (int i = 0; i < sadEmojis.Length; i++)
                 {
                     StartCoroutine(EmojiDelay(sadEmojis[i]));
