@@ -161,6 +161,9 @@ public class RiddleController : MonoBehaviour
     void LoadCongratsMenu()
     {
         LevelController.level++;
+        PlayerPrefs.SetInt("level", LevelController.level);
+        PlayerPrefs.Save();
+
         LevelController.Current.CongratsMenu();
     }
 

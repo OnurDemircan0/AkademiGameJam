@@ -11,14 +11,21 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI levelText;
 
+    [SerializeField] bool gameLevel;
+
     private void Awake()
     {
         Current = this;
+
+        level = PlayerPrefs.GetInt("level", level);
     }
 
     private void Start()
     {
-        levelText.text = "Level " + level;
+        if (gameLevel)
+        {
+            levelText.text = "Level " + level;
+        }
     }
 
     public void LoadScene()
