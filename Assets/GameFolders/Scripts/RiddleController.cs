@@ -160,6 +160,7 @@ public class RiddleController : MonoBehaviour
 
     void LoadCongratsMenu()
     {
+        LevelController.level++;
         LevelController.Current.CongratsMenu();
     }
 

@@ -13,6 +13,15 @@ public class LevelController : MonoBehaviour
         Current = this;
     }
 
+    private void Start()
+    {
+        
+    }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene("Level " + (level - 1));
+    }
     public void CongratsMenu()
     {
         SceneManager.LoadScene("congrats");

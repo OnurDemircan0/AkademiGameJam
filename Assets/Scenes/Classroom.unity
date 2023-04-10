@@ -5854,8 +5854,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rightAnswerQuestion1: 0
-  rightAnswerQuestion2: 0
-  rightAnswerQuestion3: 0
+  rightAnswerQuestion2: 1
+  rightAnswerQuestion3: 2
   correctAnswers_Text: {fileID: 1407003997}
   rivalCorrectAnswers_Text: {fileID: 1682834057}
   question1: {fileID: 304030993}
