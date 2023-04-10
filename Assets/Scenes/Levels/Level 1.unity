@@ -2509,7 +2509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time_Text: {fileID: 2099653700}
-  questionTime: 5
+  questionTime: 20
   timeFont:
     serializedVersion: 2
     rgba: 4282777381

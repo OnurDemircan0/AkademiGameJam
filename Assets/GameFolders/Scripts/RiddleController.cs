@@ -153,7 +153,7 @@ public class RiddleController : MonoBehaviour
             }
             else
             {
-                PlayCharacterSound.happy = false;
+                PlayCharacterSoundSad.sad = true;
                 for (int i = 0; i < sadEmojis.Length; i++)
                 {
                     StartCoroutine(EmojiDelay(sadEmojis[i]));

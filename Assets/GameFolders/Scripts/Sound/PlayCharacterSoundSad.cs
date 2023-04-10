@@ -6,6 +6,8 @@ public class PlayCharacterSoundSad : MonoBehaviour
 {
     AudioSource _characterAudio;
 
+    public static bool sad;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +18,7 @@ public class PlayCharacterSoundSad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PlayCharacterSound.happy)
+        if (sad)
         {
             _characterAudio.enabled = true;
             StartCoroutine(Delay());
@@ -26,6 +28,7 @@ public class PlayCharacterSoundSad : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(3f);
+        sad = false;
         _characterAudio.enabled = false;
     }
 }

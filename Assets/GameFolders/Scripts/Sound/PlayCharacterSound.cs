@@ -30,6 +30,7 @@ public class PlayCharacterSound : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(3f);
+        happy = false;
         _characterAudio.enabled = false;
     }
 }
