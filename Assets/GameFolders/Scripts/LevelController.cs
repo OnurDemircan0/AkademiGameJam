@@ -32,6 +32,11 @@ public class LevelController : MonoBehaviour
 
     public void LoadScene()
     {
+        if(level > 10)
+        {
+            level = 1;
+            PlayerPrefs.SetInt("level", level);
+        }
         SceneManager.LoadScene("Level " + (level - 1));
     }
     public void CongratsMenu()
